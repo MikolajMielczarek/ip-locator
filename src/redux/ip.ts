@@ -2,48 +2,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
-// interface ipAPI {
-//     abbreviation: undefined,
-//     client_ip: undefined,
-//     datetime: undefined,
-//     day_of_week: undefined,
-//     day_of_year: undefined,
-//     dst: undefined,
-//     dst_from: undefined,
-//     dst_offset: undefined,
-//     dst_until: undefined,
-//     raw_offset: undefined,
-//     timezone: undefined,
-//     unixtime: undefined,
-//     utc_datetime: undefined,
-//     utc_offset: undefined,
-//     week_number: undefined,
-// }
-
 interface IPState {
         ip: string,
         stackUrl: string,
         isLoading: boolean
         error: string
     }
-
-// const zeroStateForApiData = {
-//     abbreviation: undefined,
-//     client_ip: undefined,
-//     datetime: undefined,
-//     day_of_week: undefined,
-//     day_of_year: undefined,
-//     dst: undefined,
-//     dst_from: undefined,
-//     dst_offset: undefined,
-//     dst_until: undefined,
-//     raw_offset: undefined,
-//     timezone: undefined,
-//     unixtime: undefined,
-//     utc_datetime: undefined,
-//     utc_offset: undefined,
-//     week_number: undefined,
-//     }
 
 const initialState: IPState = {
   ip: '',
