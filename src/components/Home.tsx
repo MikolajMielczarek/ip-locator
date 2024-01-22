@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useFetch } from '../hooks/useFetch';
+import React from 'react'
+import Map from './Map';
+import { Container } from '@mui/material';
+import { useAppSelector } from '../redux/hooks';
+import { selectIp, selectStackUrl } from '../redux/ip';
+import { useFetchIpStack } from '../hooks/useFetchIpStack';
   
 const Home: React.FC = () => {
-    const apiUrl = 'http://worldtimeapi.org/api/ip/';
-    const {data, loading, error} = useFetch(apiUrl);
-    const [ip, setIp] = useState<string>('');
-
-
-    console.log('error', error)
-    console.log('loading', loading)
-
-    useEffect(() => {
-      if (data.client_ip) {
-        setIp(data.client_ip);
-      }
-    }, [data]);
+    const ipStore = useAppSelector(selectIp);
+    const stackUrlStore = useAppSelector(selectStackUrl);
+    const {data} = useFetchIpStack(stackUrlStore);
 
     return (
-        <div>
-            {ip}
-        </div>
+        <Container fixed>
+            {ipStore}
+            {!data && <Map location={{ lat: 37.773972, lng: -122.431297 }}/>}
+            {data.latitude && data.longitude && <Map location={{ lat: data.latitude, lng: data.longitude }}/>}
+        </Container>
     )
 }
 
