@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (url) => {
+export const useFetchIp = (url) => {
   const [data, setData] = useState({
     abbreviation: undefined,
     client_ip: undefined,
