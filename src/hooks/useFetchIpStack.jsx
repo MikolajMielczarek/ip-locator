@@ -24,6 +24,8 @@ export const useFetchIpStack = (url) => {
       calling_code: undefined,
       is_eu: undefined,
     },
+    error: { code: undefined , info: undefined},
+    success: undefined,
   });
 
   const [loading, setIsLoading] = useState(false);
@@ -51,7 +53,7 @@ export const useFetchIpStack = (url) => {
           console.log("the fetch was aborted");
         } else {
           setIsLoading(false);
-          setError("Could not fetch the data");
+          setError(err);
         }
       }
     };

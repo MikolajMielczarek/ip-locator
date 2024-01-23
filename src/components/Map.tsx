@@ -1,4 +1,3 @@
-// Map.tsx
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
@@ -12,7 +11,7 @@ const Map: React.FC<{ location: Location }> = ({ location }) => {
   const center: [number, number] = [lat, lng];
 
   return (
-    <MapContainer style={{ height: '100vh', width: '50%', fontSize: '16px' }} center={center} zoom={11}>
+    <MapContainer attributionControl={false} style={{ height: '50vh', width: '50%', fontSize: '16px' }} center={center} zoom={11}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />

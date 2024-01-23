@@ -1,9 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import ipReducer from './ip';
+import userReducer from './user';
+import stackUserReducer from './stackUser';
+import stackSearchReducer from './stackSearch';
+import searchReducer from './search';
 
 const store = configureStore({
   reducer: {
-    ip: ipReducer,
+    user: userReducer,
+    stackUser: stackUserReducer,
+    stackSearch: stackSearchReducer,
+    search: searchReducer,
   },
 });
 
