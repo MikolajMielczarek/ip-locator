@@ -7,16 +7,22 @@ import "./styles.css";
 import { useFetchIp } from './hooks/useFetchIp';
 import { useAppDispatch } from './redux/hooks';
 import { ipAndStackUrlToStore } from './redux/user';
+import { updateListStore } from './redux/search';
 
 function App() {
   // This one is to check an error about monthly usage limit has been reached.
   // const accessKeyIpStack = '069c471ff2655a70d7cf3c1d38cfc1d4';
   
   const apiIpUrl = 'http://worldtimeapi.org/api/ip/';
-  const {data} = useFetchIp(apiIpUrl);
-  const error = false;
-  const loading = false;
+  const {data, error, loading} = useFetchIp(apiIpUrl);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const storedSessionList:string[] = JSON.parse(sessionStorage.getItem('sessionList') || '[]');
+    if (storedSessionList.length > 0) {
+      dispatch(updateListStore(storedSessionList));
+    }
+  }, []);
   
   useEffect(() => {
     if (data) {

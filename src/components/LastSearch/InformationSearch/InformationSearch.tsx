@@ -8,7 +8,6 @@ const InformationSearch: React.FC = () => {
   const ipStore = useAppSelector(selectIp);
   const dataStore = useAppSelector(selectStack);
 
-  // lat: 37.773972, lng: -122.431297
     return (
       <div>
         {dataStore.error?.info && <ErrorAlert message={dataStore.error.info} />}
@@ -25,7 +24,7 @@ const InformationSearch: React.FC = () => {
           <p>Longitude: -122.431297</p>
         </>
         }
-        {!dataStore.error?.info &&
+        {dataStore.continent_name && ipStore &&
         <>
           <p>Search IP: {ipStore}</p>
           <p>Continent name: {dataStore.continent_name}</p>

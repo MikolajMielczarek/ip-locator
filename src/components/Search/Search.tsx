@@ -3,16 +3,19 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { TextField, Button, Container, Grid } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { searchIpToStore, selectStackUrl } from '../../redux/search';
+import { searchIpToStore, selectList, selectStackUrl } from '../../redux/search';
 import { useFetchIpStack } from '../../hooks/useFetchIpStack';
 import { stackToStore } from '../../redux/stackSearch';
 
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();
+  const originalList = useAppSelector(selectList);
   const stackUrlStore = useAppSelector(selectStackUrl);
   const { data } = useFetchIpStack(stackUrlStore);
   const [ipVariable, setIpVariable] = useState('');
-
+  if (data) {
+    dispatch(stackToStore(data));
+    }
   const isValidUrl = (value: string) => {
     return /^https?:\/\/[^\s/$.?#].[^\s]*$/i.test(value);
   };
@@ -43,17 +46,15 @@ const Search: React.FC = () => {
           setIpVariable(ipAddress);
         }
       },
-      
   });
 
   useEffect(() => {
     if (ipVariable) {
       dispatch(searchIpToStore(`${ipVariable}`));
+      const storageList = [...originalList, ipVariable ];
+      sessionStorage.setItem('sessionList', JSON.stringify(storageList));
     }
-    if (data) {
-        dispatch(stackToStore(data));
-    }
-  }, [ipVariable, data]);
+  }, [ipVariable]);
 
   return (
     <Container>

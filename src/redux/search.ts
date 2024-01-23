@@ -43,6 +43,9 @@ export const searchSlice = createSlice({
       state.error = '';
       state.isLoading = false;
     },
+    updateListStore: (state, action) => {
+        state.list = [...state.list, ...action.payload];
+      },
   },
 });
 
@@ -50,6 +53,7 @@ export const {
   isErrorSearch,
   isLoadingSearch,
   searchIpToStore,
+  updateListStore,
 } = searchSlice.actions;
 export const selectIp = (state: RootState) => state.search.ip;
 export const selectStackUrl = (state: RootState) => state.search.stackUrl;
