@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import RecenterAutomatically from './RecenterAutomatically';
 
 interface Location {
   lat: number;
@@ -18,6 +19,7 @@ const Map: React.FC<{ location: Location }> = ({ location }) => {
       <Marker position={center}>
         <Popup>{`Latitude: ${lat}, Longitude: ${lng}`}</Popup>
       </Marker>
+      <RecenterAutomatically location={location} />
     </MapContainer>
   );
 };
