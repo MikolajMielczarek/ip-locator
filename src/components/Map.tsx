@@ -11,7 +11,7 @@ const Map: React.FC<{ location: Location }> = ({ location }) => {
   const center: [number, number] = [lat, lng];
 
   return (
-    <MapContainer attributionControl={false} style={{ height: '50vh', width: '50%', fontSize: '16px' }} center={center} zoom={11}>
+    <MapContainer attributionControl={false} style={{ height: '100%', width: '100%', fontSize: '16px' }} center={center} zoom={11}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />

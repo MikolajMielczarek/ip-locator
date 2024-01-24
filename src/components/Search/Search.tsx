@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { TextField, Button, Container, Grid } from '@mui/material';
+import { TextField, Button, Container, Grid, Typography, Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { searchIpToStore, selectList, selectStackUrl } from '../../redux/search';
 import { useFetchIpStack } from '../../hooks/useFetchIpStack';
@@ -15,7 +15,7 @@ const Search: React.FC = () => {
   const [ipVariable, setIpVariable] = useState('');
   if (data) {
     dispatch(stackToStore(data));
-    }
+  }
   const isValidUrl = (value: string) => {
     return /^https?:\/\/[^\s/$.?#].[^\s]*$/i.test(value);
   };
@@ -29,29 +29,30 @@ const Search: React.FC = () => {
       inputValue: '',
     },
     validationSchema: Yup.object({
-      inputValue: Yup.string().required('This field is required').test(
-        'is-valid-input',
-        'Please input proper IP or URL',
-        (value) => {
-          return isValidIpAddress(value) || (isValidUrl(value));
-        }
-      ),
+      inputValue: Yup.string()
+        .required('This field is required')
+        .test(
+          'is-valid-input',
+          'Please input proper IP or URL',
+          (value) => isValidIpAddress(value) || isValidUrl(value)
+        ),
     }),
-    onSubmit: (values) => {      
-        if (isValidIpAddress(values.inputValue)) {
-          setIpVariable(values.inputValue);
-        } else if (isValidUrl(values.inputValue)) {      
-          const url = new URL(values.inputValue);
-          const ipAddress = url.hostname;
-          setIpVariable(ipAddress);
-        }
-      },
+    onSubmit: (values, { resetForm }) => {
+      if (isValidIpAddress(values.inputValue)) {
+        setIpVariable(values.inputValue);
+      } else if (isValidUrl(values.inputValue)) {
+        const url = new URL(values.inputValue);
+        const ipAddress = url.hostname;
+        setIpVariable(ipAddress);
+      }
+      resetForm();
+    },
   });
 
   useEffect(() => {
     if (ipVariable) {
       dispatch(searchIpToStore(`${ipVariable}`));
-      const storageList = [...originalList, ipVariable ];
+      const storageList = [...originalList, ipVariable];
       sessionStorage.setItem('sessionList', JSON.stringify(storageList));
     }
   }, [ipVariable]);
@@ -59,23 +60,64 @@ const Search: React.FC = () => {
   return (
     <Container>
       <form onSubmit={formik.handleSubmit}>
-        <Grid container spacing={2} alignItems="center">
+        <Grid container spacing={2} alignItems="center" style={{ paddingTop:'9px' }}>
           <Grid item xs={8}>
-            <TextField
-              label="IP or URL"
-              variant="outlined"
-              fullWidth
-              id="inputValue"
-              name="inputValue"
-              value={formik.values.inputValue}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.inputValue && Boolean(formik.errors.inputValue)}
-              helperText={formik.touched.inputValue && formik.errors.inputValue}
-            />
+            <Box
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                position: 'relative',
+              }}
+            >
+              <TextField
+                label="Text here IP or URL"
+                variant="outlined"
+                fullWidth
+                id="inputValue"
+                name="inputValue"
+                value={formik.values.inputValue}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.inputValue && Boolean(formik.errors.inputValue)}
+                InputProps={{
+                  style: {
+                    fontSize: '1.6rem',
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: '1.6rem',
+                  },
+                }}
+              />
+              {formik.touched.inputValue && formik.errors.inputValue && (
+                <Typography
+                  style={{
+                    fontSize: '12px',
+                    position: 'absolute',
+                    bottom: formik.errors.inputValue ? '-20px' : '0',
+                    left: '0',
+                    color: 'red',
+                  }}
+                >
+                  {formik.errors.inputValue}
+                </Typography>
+              )}
+            </Box>
           </Grid>
-          <Grid item xs={4}>
-            <Button type="submit" variant="contained" color="primary">
+          <Grid item xs={4} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Button
+              style={{
+                fontWeight: 'bold',
+                fontSize: '1.4rem',
+                height: '50px',
+                width: '80%',
+              }}
+              size="large"
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
               Search
             </Button>
           </Grid>

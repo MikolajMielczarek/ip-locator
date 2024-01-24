@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, ListItem, Typography } from '@mui/material';
+import { List, ListItem, Typography, Paper } from '@mui/material';
 import { useAppSelector } from '../../redux/hooks';
 import { selectList } from '../../redux/search';
 
@@ -8,16 +8,26 @@ const ListSearches: React.FC = () => {
   const reversedList = originalList.slice().reverse();
 
   return (
-    <div>
-      <Typography variant="h6">List of all searches:</Typography>
+    <Paper style={{ height: '100%', backgroundColor: '#6b79ef', padding: '16px'}}>
+      <Typography variant="h6" style={{ color: '#ffffff', marginBottom: '16px', fontSize: '2rem', fontWeight: 'bold' }}>
+        List of all searches:
+      </Typography>
       <List>
         {reversedList.map((item, index) => (
-          <ListItem key={index}>
-            <Typography>{item}</Typography>
+          <ListItem
+            key={index}
+            sx={{
+              borderBottom: '1px solid #ffffff',
+              '&:hover': {
+                backgroundColor: '#4f5d95',
+              },
+            }}
+          >
+            <Typography style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#ffffff' }}>{item}</Typography>
           </ListItem>
         ))}
       </List>
-    </div>
+    </Paper>
   );
 };
 

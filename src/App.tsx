@@ -32,7 +32,6 @@ function App() {
 
   return (
     <main className="page-container">
-      <div>
         {error && <ErrorAlert message={error} />}
         {loading && <Spinner />}
         <BrowserRouter>
@@ -40,7 +39,6 @@ function App() {
             <Route path="/" element={<Home />} />
           </Routes>
         </BrowserRouter>
-      </div>
     </main>
   );
 }
