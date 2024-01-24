@@ -1,38 +1,22 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-
-interface UserInformation {
-    continent_code: string,
-    continent_name: string,
-    country_code: string,
-    country_name: string,
-    city: string,
-    zip: string,
-    latitude: number,
-    longitude: number,
-    error: { code: string , info: string},
-}
-
-interface StackState {
-    userInformation: UserInformation
-    isLoading: boolean
-    error: string
-}
+import { StackStateUser } from '../interfaces';
 
 const userInformationInitial = {
-    continent_code: '',
-    continent_name: '',
-    country_code: '',
-    country_name: '',
-    city: '',
-    zip: '',
-    latitude: 0,
-    longitude: 0,
-    error: { code: '' , info: ''},
+  ip: '',
+  continent_code: '',
+  continent_name: '',
+  country_code: '',
+  country_name: '',
+  city: '',
+  zip: '',
+  latitude: 0,
+  longitude: 0,
+  error: { code: '' , info: ''},
 }
 
-const initialState: StackState = {
+const initialState: StackStateUser = {
   userInformation: userInformationInitial,
   isLoading: false,
   error: '',

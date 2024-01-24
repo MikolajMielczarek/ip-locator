@@ -1,19 +1,13 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
+import { IPStateUser } from '../interfaces';
 
-interface IPState {
-    ip: string,
-    stackUrl: string,
-    isLoading: boolean
-    error: string
-}
-
-const initialState: IPState = {
-    ip: '',
-    stackUrl: '',
-    isLoading: false,
-    error: '',
+const initialState: IPStateUser = {
+  ip: '',
+  stackUrl: '',
+  isLoading: false,
+  error: '',
 };
 
 export const userSlice = createSlice({
@@ -50,6 +44,5 @@ export const selectIp = (state: RootState) => state.user.ip;
 export const selectStackUrl = (state: RootState) => state.user.stackUrl;
 export const selectIsLoading = (state: RootState) => state.user.isLoading;
 export const selectError = (state: RootState) => state.user.error;
-
 
 export default userSlice.reducer;

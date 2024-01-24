@@ -2,11 +2,9 @@ import React from 'react';
 import { useAppSelector } from '../../../redux/hooks';
 import { selectStack } from '../../../redux/stackUser';
 import ErrorAlert from '../../ErrorAlert';
-import { selectIp } from '../../../redux/user';
 import { Paper, Typography } from '@mui/material';
 
 const InformationUser: React.FC = () => {
-  const ipStore = useAppSelector(selectIp);
   const dataStore = useAppSelector(selectStack);
 
   return (
@@ -34,7 +32,7 @@ const InformationUser: React.FC = () => {
       {dataStore.error?.info && <ErrorAlert message={dataStore.error.info} />}
       {!dataStore.error?.info && (
         <>
-          <Typography>Your IP: {ipStore}</Typography>
+          <Typography>Your IP: {dataStore.ip}</Typography>
           <Typography>Continent name: {dataStore.continent_name}</Typography>
           <Typography>Continent code: {dataStore.continent_code}</Typography>
           <Typography>Country name: {dataStore.country_name}</Typography>

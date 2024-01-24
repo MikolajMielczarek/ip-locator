@@ -4,14 +4,15 @@ import * as Yup from 'yup';
 import { TextField, Button, Container, Grid, Typography, Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { searchIpToStore, selectList, selectStackUrl } from '../../redux/search';
-import { useFetchIpStack } from '../../hooks/useFetchIpStack';
+import useFetch from '../../hooks/useFetch';
 import { stackToStore } from '../../redux/stackSearch';
 
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const originalList = useAppSelector(selectList);
   const stackUrlStore = useAppSelector(selectStackUrl);
-  const { data } = useFetchIpStack(stackUrlStore);
+  const { data } = useFetch(stackUrlStore);
+
   const [ipVariable, setIpVariable] = useState('');
   if (data) {
     dispatch(stackToStore(data));

@@ -1,64 +1,38 @@
+// This one is to check an error about monthly usage limit has been reached.
+// const accessKeyIpStack = '069c471ff2655a70d7cf3c1d38cfc1d4';
+
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
-
-interface IPState {
-    ip: string,
-    stackUrl: string,
-    list: string[],
-    isLoading: boolean
-    error: string
-}
+import { IPState } from '../interfaces';
 
 const initialState: IPState = {
-    ip: '',
-    stackUrl: '',
-    list: [],
-    isLoading: false,
-    error: '',
+  ip: '',
+  stackUrl: '',
+  list: [],
 };
 
 export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    isErrorSearch: (state, action) => {
-      state.error = action.payload;
-      state.isLoading = false;
-      state.ip = '';
-      state.stackUrl = '';
-      state.list = [];
-    },
-    isLoadingSearch: (state) => {
-      state.isLoading = true;
-      state.error = '';
-      state.ip = '';
-      state.stackUrl = '';
-      state.list = [];
-    },
     searchIpToStore: (state, action) => {
       state.ip = action.payload;
       state.stackUrl = `http://api.ipstack.com/${action.payload}?access_key=5905c3b2d497f0329459281ed6ea2978`;
       state.list.push(action.payload);
-      state.error = '';
-      state.isLoading = false;
     },
     updateListStore: (state, action) => {
-        state.list = [...state.list, ...action.payload];
-      },
+      state.list = [...state.list, ...action.payload];
+    },
   },
 });
 
 export const {
-  isErrorSearch,
-  isLoadingSearch,
   searchIpToStore,
   updateListStore,
 } = searchSlice.actions;
 export const selectIp = (state: RootState) => state.search.ip;
 export const selectStackUrl = (state: RootState) => state.search.stackUrl;
 export const selectList = (state: RootState) => state.search.list;
-export const selectIsLoading = (state: RootState) => state.search.isLoading;
-export const selectError = (state: RootState) => state.search.error;
 
 export default searchSlice.reducer;

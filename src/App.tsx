@@ -3,20 +3,16 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Spinner from './components/Spinner';
 import ErrorAlert from './components/ErrorAlert';
-import "./styles.css";
-import { useFetchIp } from './hooks/useFetchIp';
 import { useAppDispatch } from './redux/hooks';
-import { ipAndStackUrlToStore } from './redux/user';
+import { ipAndStackUrlToStore, isErrorIp, isLoadingIp } from './redux/user';
 import { updateListStore } from './redux/search';
+import useFetch from './hooks/useFetch';
+import { UserData } from './interfaces';
 
 function App() {
-  // This one is to check an error about monthly usage limit has been reached.
-  // const accessKeyIpStack = '069c471ff2655a70d7cf3c1d38cfc1d4';
-  
   const apiIpUrl = 'http://worldtimeapi.org/api/ip/';
-  const {data, error, loading} = useFetchIp(apiIpUrl);
+  const {data, error, loading} = useFetch<UserData>(apiIpUrl);
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     const storedSessionList:string[] = JSON.parse(sessionStorage.getItem('sessionList') || '[]');
     if (storedSessionList.length > 0) {
@@ -28,11 +24,17 @@ function App() {
     if (data) {
       dispatch(ipAndStackUrlToStore(data.client_ip));
     }
+    if (error) {
+      dispatch(isErrorIp(error));
+    }
+    if (loading) {
+      dispatch(isLoadingIp());
+    }
   }, [data]);
 
   return (
     <main className="page-container">
-        {error && <ErrorAlert message={error} />}
+        {error && <ErrorAlert message={'There is a problem with worldtimeapi'} />}
         {loading && <Spinner />}
         <BrowserRouter>
           <Routes>
