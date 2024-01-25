@@ -7,11 +7,9 @@ import App from './App';
 
 jest.mock('node-fetch');
 
-// const apiIpUrl = 'http://worldtimeapi.org/api/ip/';
-
-
 describe.skip('App Component', () => {
   it('renders App component', async () => {
+    
     render(
       <Provider store={store}>
         <App />
@@ -19,11 +17,10 @@ describe.skip('App Component', () => {
     );
     const main = screen.getByRole('main');
     expect(main).toBeInTheDocument();
-    // const headingElement = screen.getByRole('heading', { name: /List of all searches:/i });
-    // expect(headingElement).toBeInTheDocument();
   });
 
   it('handles user input and triggers search', async () => {
+
     render(
       <Provider store={store}>
         <App />

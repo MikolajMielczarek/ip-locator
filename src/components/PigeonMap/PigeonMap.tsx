@@ -45,7 +45,7 @@ const PigeonMap: React.FC<MapProps> = ({ location }) => {
         onMouseOut={() => setTooltipVisible(false)}
       />
       {tooltipVisible && (
-        <div style={{ zIndex: '10', position: 'absolute', top: '60%', left: '50%', transform: 'translate(-50%, -50%)', fontWeight: 'bold' }}>
+        <div style={{ position: 'absolute', top: '60%', left: '50%', transform: 'translate(-50%, -50%)', fontWeight: 'bold' }}>
           <p>Lat: {location.lat.toFixed(6)}</p>
           <p>Lng: {location.lng.toFixed(6)}</p>
         </div>

@@ -3,17 +3,18 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { TextField, Button, Container, Grid, Typography, Box } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { searchIpToStore, selectList, selectStackUrl } from '../../redux/search';
+import { searchIpToStore, selectList } from '../../redux/search';
 import useFetch from '../../hooks/useFetch';
 import { stackToStore } from '../../redux/stackSearch';
 
 const Search: React.FC = () => {
   const dispatch = useAppDispatch();
   const originalList = useAppSelector(selectList);
-  const stackUrlStore = useAppSelector(selectStackUrl);
-  const { data } = useFetch(stackUrlStore);
-
   const [ipVariable, setIpVariable] = useState('');
+  const accessKeyIpStack = process.env.REACT_APP_IPSTACK_API_KEY;
+  const stackUrl = `http://api.ipstack.com/${ipVariable}?access_key=${accessKeyIpStack}`;
+  const { data } = useFetch(stackUrl);
+
   if (data) {
     dispatch(stackToStore(data));
   }

@@ -3,6 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { IPStateUser } from '../interfaces';
 
+// This one is to check an error about monthly usage limit has been reached.
+// const accessKeyIpStack = '069c471ff2655a70d7cf3c1d38cfc1d4';
+const accessKeyIpStack = process.env.REACT_APP_IPSTACK_API_KEY;
+
 const initialState: IPStateUser = {
   ip: '',
   stackUrl: '',
@@ -28,7 +32,7 @@ export const userSlice = createSlice({
     },
     ipAndStackUrlToStore: (state, action) => {
       state.ip = action.payload;
-      state.stackUrl = `http://api.ipstack.com/${action.payload}?access_key=5905c3b2d497f0329459281ed6ea2978`;
+      state.stackUrl = `http://api.ipstack.com/${action.payload}?access_key=${accessKeyIpStack}`;
       state.error = '';
       state.isLoading = false;
     },

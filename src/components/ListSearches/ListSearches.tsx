@@ -9,15 +9,15 @@ const ListSearches: React.FC = () => {
 
   return (
     <Paper style={{ height: '100%', backgroundColor: '#6b79ef', padding: '16px'}}>
-      <Typography variant="h6" style={{ color: '#ffffff', marginBottom: '16px', fontSize: '2rem', fontWeight: 'bold' }}>
-        List of all searches:
+      <Typography variant="h6" style={{ textAlign: 'center', color: '#ffffff', marginBottom: '16px', fontSize: '2rem', fontWeight: 'bold' }}>
+        History list of searches
       </Typography>
       <List>
       {originalList.length === 0 && 
           <ListItem
             sx={{
-              marginLeft: '40px',
-              marginTop: '40px',
+              paddingLeft: '60px',
+              paddingTop: '40px',
             }}
           >
             <Typography style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#ffffff' }}>history is empty</Typography>

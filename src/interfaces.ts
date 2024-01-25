@@ -45,7 +45,6 @@ export interface LocationData {
 
 export interface IPState {
     ip: string,
-    stackUrl: string,
     list: string[],
 }
 
