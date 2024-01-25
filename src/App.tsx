@@ -32,9 +32,12 @@ function App() {
     }
   }, [data]);
 
+  if(error) {
+    return <ErrorAlert message={'There is a problem with worldtimeapi'} />
+  }
+
   return (
     <main className="page-container">
-        {error && <ErrorAlert message={'There is a problem with worldtimeapi'} />}
         {loading && <Spinner />}
         <BrowserRouter>
           <Routes>
