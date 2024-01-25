@@ -5,7 +5,7 @@ import { selectList } from '../../redux/search';
 
 const ListSearches: React.FC = () => {
   const originalList = useAppSelector(selectList);
-  const reversedList = originalList.slice().reverse();
+  const reversedList = originalList;
 
   return (
     <Paper style={{ height: '100%', backgroundColor: '#6b79ef', padding: '16px'}}>
@@ -13,7 +13,16 @@ const ListSearches: React.FC = () => {
         List of all searches:
       </Typography>
       <List>
-        {reversedList.map((item, index) => (
+      {originalList.length === 0 && 
+          <ListItem
+            sx={{
+              marginLeft: '40px',
+              marginTop: '40px',
+            }}
+          >
+            <Typography style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#ffffff' }}>history is empty</Typography>
+          </ListItem>}
+        {reversedList.slice().reverse().map((item, index) => (
           <ListItem
             key={index}
             sx={{

@@ -10,7 +10,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowJs": true,
@@ -22,7 +22,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": [
-    "src"
-    ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "tests/**/*.ts", "tests/**/*.tsx", "src/types/*.d.ts"],
+  "types": ["jest"]
 }

@@ -1,7 +1,6 @@
 // This one is to check an error about monthly usage limit has been reached.
 // const accessKeyIpStack = '069c471ff2655a70d7cf3c1d38cfc1d4';
 
-/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { IPState } from '../interfaces';

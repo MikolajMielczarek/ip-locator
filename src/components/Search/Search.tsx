@@ -53,13 +53,15 @@ const Search: React.FC = () => {
   useEffect(() => {
     if (ipVariable) {
       dispatch(searchIpToStore(`${ipVariable}`));
-      const storageList = [...originalList, ipVariable];
-      sessionStorage.setItem('sessionList', JSON.stringify(storageList));
+      if (originalList?.length > 0) {
+        const storageList = [...originalList, ipVariable];
+        sessionStorage.setItem('sessionList', JSON.stringify(storageList));
+      }
     }
   }, [ipVariable]);
 
   return (
-    <Container>
+    <Container data-testid="search-component">
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2} alignItems="center" style={{ paddingTop:'9px' }}>
           <Grid item xs={8}>
@@ -71,6 +73,7 @@ const Search: React.FC = () => {
               }}
             >
               <TextField
+                data-testid="input"
                 label="Text here IP or URL"
                 variant="outlined"
                 fullWidth
@@ -89,6 +92,9 @@ const Search: React.FC = () => {
                   style: {
                     fontSize: '1.6rem',
                   },
+                }}
+                inputProps={{
+                  "aria-label": "Text here IP or URL",
                 }}
               />
               {formik.touched.inputValue && formik.errors.inputValue && (

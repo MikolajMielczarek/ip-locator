@@ -30,7 +30,7 @@ const InformationUser: React.FC = () => {
       }}
     >
       {dataStore.error?.info && <ErrorAlert message={dataStore.error.info} />}
-      {!dataStore.error?.info && (
+      {dataStore.ip && (
         <>
           <Typography>Your IP: {dataStore.ip}</Typography>
           <Typography>Continent name: {dataStore.continent_name}</Typography>

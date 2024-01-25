@@ -8,7 +8,7 @@ const loaderStyle = {
   height: '100vh',
 };
 
-const Loader: React.FC = () => {
+const Spinner: React.FC = () => {
   return (
     <div style={loaderStyle}>
       <CircularProgress color="primary" />
@@ -16,4 +16,4 @@ const Loader: React.FC = () => {
   );
 };
 
-export default Loader;
+export default Spinner;
