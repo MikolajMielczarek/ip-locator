@@ -10,7 +10,7 @@ import useFetch from './hooks/useFetch';
 import { UserData } from './interfaces';
 
 function App() {
-  const apiIpUrl = 'http://worldtimeapi.org/api/ip/';
+  const apiIpUrl = 'https://worldtimeapi.org/api/ip/';
   const {data, error, loading} = useFetch<UserData>(apiIpUrl);
   const dispatch = useAppDispatch();
   useEffect(() => {
