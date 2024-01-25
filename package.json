@@ -31,8 +31,8 @@
     "yup": "^1.3.3"
   },
   "scripts": {
-    "start": "node server.js",
-    "heroku-postbuild": "yarn build",
+    "start": "yarn run $REACT_APP_START_COMMAND",
+    "heroku-postbuild": "yarn build && node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
