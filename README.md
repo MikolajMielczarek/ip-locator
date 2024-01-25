@@ -33,6 +33,10 @@ IP Locator is a web application that allows users to retrieve geolocation inform
    ```bash
    yarn install
 2. **Run the application:**
+    Before You run locally application please create .env.local and add two env:
+    REACT_APP_IPSTACK_API_KEY= HERE IS A PLACE FOR YOUR KEY
+    REACT_APP_START_COMMAND=react-scripts start
+
    ```bash
    yarn start
 3. **InstaTestingllation:**
