@@ -28,7 +28,7 @@ const User: React.FC = () => {
   }, [data]);
 
   if (error) {
-    return <ErrorAlert message={'There is a problem with worldtimeapi'} />
+    return <ErrorAlert message={'There is a problem with API ipstack'} />
   }
   if (data?.error?.info) {
     return <ErrorAlert message={data.error.info} />
