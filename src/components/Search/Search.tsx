@@ -12,7 +12,7 @@ const Search: React.FC = () => {
   const originalList = useAppSelector(selectList);
   const [ipVariable, setIpVariable] = useState('');
   const accessKeyIpStack = process.env.REACT_APP_IPSTACK_API_KEY;
-  const stackUrl = `http://api.ipstack.com/${ipVariable}?access_key=${accessKeyIpStack}`;
+  const stackUrl = `https://api.ipstack.com/${ipVariable}?access_key=${accessKeyIpStack}`;
   const { data } = useFetch(stackUrl);
 
   if (data) {

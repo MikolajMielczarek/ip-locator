@@ -32,7 +32,7 @@ export const userSlice = createSlice({
     },
     ipAndStackUrlToStore: (state, action) => {
       state.ip = action.payload;
-      state.stackUrl = `http://api.ipstack.com/${action.payload}?access_key=${accessKeyIpStack}`;
+      state.stackUrl = `https://api.ipstack.com/${action.payload}?access_key=${accessKeyIpStack}`;
       state.error = '';
       state.isLoading = false;
     },
