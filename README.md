@@ -2,8 +2,6 @@
 
 IP Locator is a web application that allows users to retrieve geolocation information based on IP addresses or URLs. The application provides visual representation on a map and detailed information about the specified location.
 
-To see how it works enter here: https://ip-locator-46e071faa7cf.herokuapp.com/
-
 ## Features
 
 - **User Location:**
@@ -35,10 +33,10 @@ To see how it works enter here: https://ip-locator-46e071faa7cf.herokuapp.com/
    ```bash
    yarn install
 2. **Run the application:**
-    Before You run locally application please create .env.local and add two env:
+    Before You run locally application please do this:
+    1. Create .env.local and add env:
     REACT_APP_IPSTACK_API_KEY= HERE IS A PLACE FOR YOUR KEY
-    REACT_APP_START_COMMAND=react-scripts start
-
+    2. In package.json replace command "start" with this: "react-scripts start"
    ```bash
    yarn start
 3. **InstaTestingllation:**

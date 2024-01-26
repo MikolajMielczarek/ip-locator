@@ -1,5 +1,4 @@
 import React from 'react';
-// import Map from '../../Map';
 import { useAppSelector } from '../../../redux/hooks';
 import { selectStack } from '../../../redux/stackSearch';
 import ErrorAlert from '../../ErrorAlert';
