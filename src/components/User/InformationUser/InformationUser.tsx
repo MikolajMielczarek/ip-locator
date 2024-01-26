@@ -15,6 +15,7 @@ const InformationUser: React.FC = () => {
         padding: '16px',
         boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
         height: '100%',
+        minHeight: '300px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',

@@ -62,7 +62,7 @@ const Search: React.FC = () => {
   }, [ipVariable]);
 
   return (
-    <Container data-testid="search-component">
+    <Container data-testid="search-component" style={{ minHeight: '300px' }}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={2} alignItems="center" style={{ paddingTop:'9px' }}>
           <Grid item xs={8}>

@@ -8,7 +8,7 @@ const MapUser: React.FC = () => {
   const dataStore = useAppSelector(selectStack);
 
   return (
-    <div id='map' style={{ position: 'relative', height: '100%' }}>
+    <div style={{ position: 'relative', height: '100%', minHeight: '300px' }}>
       {dataStore.error?.info && <ErrorAlert message={dataStore.error.info} />}
       {dataStore.latitude && dataStore.longitude && <PigeonMap location={{ lat: dataStore.latitude, lng: dataStore.longitude }} />}
     </div>

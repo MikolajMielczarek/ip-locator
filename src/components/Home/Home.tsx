@@ -12,7 +12,7 @@ const Home: React.FC = () => {
         <Grid item xs={12} md={3}>
           <Paper
             style={{
-              height: '96.6vh',
+              height: '100%',
               borderRadius: 10,
               boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
               overflowY: 'auto',
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
           <Grid item xs={12}>
             <Paper
               style={{
-                height: '42vh',
+                minHeight: '42vh',
                 borderRadius: 10,
                 boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
               }}
@@ -50,7 +50,7 @@ const Home: React.FC = () => {
           <Grid item xs={12}>
             <Paper
               style={{
-                height: '42vh',
+                minHeight: '42vh',
                 borderRadius: 10,
                 boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
               }}

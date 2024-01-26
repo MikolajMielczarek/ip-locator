@@ -7,7 +7,7 @@ import App from './App';
 
 jest.mock('node-fetch');
 
-describe.skip('App Component', () => {
+describe('App Component', () => {
   it('renders App component', async () => {
     
     render(
