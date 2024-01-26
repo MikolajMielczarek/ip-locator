@@ -2,6 +2,8 @@
 
 IP Locator is a web application that allows users to retrieve geolocation information based on IP addresses or URLs. The application provides visual representation on a map and detailed information about the specified location.
 
+Checked it here: https://ip-locator-46e071faa7cf.herokuapp.com/
+
 ## Features
 
 - **User Location:**

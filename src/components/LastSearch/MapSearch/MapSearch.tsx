@@ -4,7 +4,6 @@ import { selectStack } from '../../../redux/stackSearch';
 import ErrorAlert from '../../ErrorAlert';
 import PigeonMap from '../../PigeonMap/PigeonMap';
 
-
 const MapSearch: React.FC = () => {
   const dataStore = useAppSelector(selectStack);
 
@@ -16,5 +15,5 @@ const MapSearch: React.FC = () => {
     </div>
   );
 };
-  
+
 export default MapSearch;
